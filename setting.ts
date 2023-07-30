@@ -76,17 +76,24 @@ export class AOSRSettingTab extends PluginSettingTab {
                 }));
 
         new Setting(containerEl)
-            .setName(i18n.t('SettingTextWaitting') || "")
-            .setDesc(i18n.t('SettingTextWaittingDesc') || "")
-            .addSlider(slider => slider
-                .setDynamicTooltip()
-                .setLimits(0, 15, 0.5)
-                .setValue(GlobalSettings.WaitingTimeoutBase)
+            .setName(i18n.t('SettingTextWaiting') || "")
+            .setDesc(i18n.t('SettingTextWaitingDesc') || "")
+            .addText(text => text
+                .setPlaceholder('0-15')
+                .setValue(GlobalSettings.WaitingTimeoutBase.toString())
                 .onChange(async (value) => {
-                    GlobalSettings.WaitingTimeoutBase = Number(value)
+                    GlobalSettings.WaitingTimeoutBase = Number(value);
                     await this.plugin.saveSettings();
-                })
-            )
+                }));
+            // .addSlider(slider => slider
+            //     .setDynamicTooltip()
+            //     .setLimits(0, 15, 0.5)
+            //     .setValue(GlobalSettings.WaitingTimeoutBase)
+            //     .onChange(async (value) => {
+            //         GlobalSettings.WaitingTimeoutBase = Number(value)
+            //         await this.plugin.saveSettings();
+            //     })
+            // )
 
         new Setting(containerEl)
             .setName(i18n.t('SettingHideContext') || '')
@@ -100,8 +107,8 @@ export class AOSRSettingTab extends PluginSettingTab {
             )
 
         new Setting(containerEl)
-            .setName('Word TTS [experiment]')
-            .setDesc('Input a TTS URL to pronounce the single word in the card. Use %s to represent word.')
+            .setName('Word TTS [experimental]')
+            .setDesc('TTS URL to pronounce the single word in the card. Use %s to represent word.')
             .addText(text => text
                 .setPlaceholder('http://word.tts/%s')
                 .setValue(GlobalSettings.WordTTSURL)
