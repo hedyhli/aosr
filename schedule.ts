@@ -323,7 +323,7 @@ export class defaultSchedule implements PatternSchedule {
 // 卡片所有的复习结果
 export class CardSchedule {
     copy(cardSchedule: CardSchedule) {
-        const map1 = new Map(Object.entries(cardSchedule.schedules))
+        const map1: Map<string, PatternSchedule> = new Map(Object.entries(cardSchedule.schedules))
         for (let [k, v] of map1) {
             let schedule = NewSchedule(k)
             schedule.copy(v)
