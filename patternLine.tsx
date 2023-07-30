@@ -9,9 +9,13 @@ import { GlobalSettings } from "setting";
 import { TagParser } from "tag";
 import { renderMarkdown } from "./markdown";
 import { NodeContainer } from "./nodeContainer";
+
 import MUICard from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system';
+
+import pluginAPI from '@vanakat/plugin-api'
+const tts = pluginApi('tts');
 
 
 abstract class linePattern extends Pattern {
@@ -44,23 +48,27 @@ abstract class linePattern extends Pattern {
 	}
 	Pronounce(): void {
 		// 如果是单词 则尝试调用有道发音
-		let ttstext = ""
+		let title = ""
+		let text = ""
 		if (this.reverse == false) {
-			ttstext = this.front
+			title = this.front
+			text = this.back
 		} else {
-			ttstext = this.back
+			title = this.back
+			text = this.front
 		}
-		if (/^[a-zA-Z\s-]+$/.test(ttstext)) {
+		if (/^[a-zA-Z\s-]+$/.test(title) && /^[a-zA-Z\s-]+$/.test(text)) {
 			setTimeout(() => {
-				this.playTTS(ttstext)
+				this.playTTS(title, text)
 			}, 100);
 		}
 	}
-	playTTS = async (text: string) => {
+	playTTS = async (title: string, text: string) => {
 		if (GlobalSettings.WordTTSURL.length > 0) {
-			let url = GlobalSettings.WordTTSURL.replace('%s', text)
-			const audio = new Audio(url)
-			await audio.play()
+            await tts.say(title, text);
+			// let url = GlobalSettings.WordTTSURL.replace('%s', text)
+			// const audio = new Audio(url)
+			// await audio.play()
 		}
 	}
 }
