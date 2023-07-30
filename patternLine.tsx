@@ -46,35 +46,23 @@ abstract class linePattern extends Pattern {
 	Component = (props: PatternProps): JSX.Element => {
 		return <LinePatternComponent reverse={this.reverse} front={this.front} back={this.back} path={this.card.note.path} patternProps={props}></LinePatternComponent>
 	}
-	Pronounce(): void {
-		// // 如果是单词 则尝试调用有道发音
-		// let title = ""
-		// let text = ""
-		// if (this.reverse == false) {
-		// 	title = this.front
-		// 	text = this.back
-		// } else {
-		// 	title = this.back
-		// 	text = this.front
-		// }
-		// if (/^[a-zA-Z\s-]+$/.test(title) && /^[a-zA-Z\s-]+$/.test(text)) {
-		// 	setTimeout(() => {
-		// 		this.playTTS(title, text)
-		// 	}, 100);
-		// }
-		this.PlayTTS()
+	TTSFront(): void {
+		if (this.reverse == false) {
+            this.PlayTTS(this.front)
+        } else {
+            this.PlayTTS(this.back)
+        }
 	}
-	PlayTTS = (): void => {
+	TTSBack(): void {
+		if (this.reverse == false) {
+            this.PlayTTS(this.back)
+        } else {
+            this.PlayTTS(this.front)
+        }
+	}
+	PlayTTS = (text: string): void => {
 		if (GlobalSettings.WordTTSURL.length > 0) {
-            if (this.reverse == false) {
-                setTimeout(() => {
-                    tts.say(this.front, this.back);
-                }, 100);
-            } else {
-                setTimeout(() => {
-                    tts.say(this.back, this.front);
-                }, 100);
-            }
+            setTimeout(() => { tts.say("", text); }, 100);
 			// let url = GlobalSettings.WordTTSURL.replace('%s', text)
 			// const audio = new Audio(url)
 			// await audio.play()

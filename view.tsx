@@ -288,7 +288,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 			fileName: replaceSlashWithArrow(removeMdExtension(result.value.pattern.card.note.path)),
 			showAns: false,
 		})
-		result.value.pattern.Pronounce()
+		result.value.pattern.TTSFront()
 	}
 	PatternComponent = () => {
 		if (this.state.nowPattern) {
@@ -328,6 +328,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 			showAns: true,
 			mark: mark,
 		})
+		this.state.nowPattern?.TTSBack()
 	}
 	render() {
 		return <Box>
