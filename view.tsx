@@ -748,7 +748,7 @@ export class ReviewView extends ItemView {
 		return VIEW_TYPE_REVIEW
 	}
 	getDisplayText(): string {
-		return "Aosr"
+		return "Aosr Fork"
 	}
 	async onload() {
 		let rootDiv = this.containerEl.children[1].createDiv()
