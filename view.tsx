@@ -368,9 +368,6 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 					</Box>
 				</>
 			}
-			<Box sx={{ minHeight: 135, marginTop: 2, marginBottom: 2 }}>
-				<this.PatternComponent></this.PatternComponent>
-			</Box>
 			<Box sx={{ marginTop: 2, marginBottom: 2 }}>
 				{
 					!this.state.showAns &&
@@ -431,6 +428,9 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 						}
 					</Stack>
 				}
+			</Box>
+			<Box sx={{ minHeight: 135, marginTop: 2, marginBottom: 2 }}>
+				<this.PatternComponent></this.PatternComponent>
 			</Box>
 		</Box>
 	}
