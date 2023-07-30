@@ -19,8 +19,8 @@ const enTranslation = {
     ButtonTextWrong: "Oops", // Misremembered
     // Button Area
     ButtonTextSkip: "Skip", // Skip to the next
-    ButtonTextOpenFile: "Open File", // Open the file location
-    ButtonTextOpenLast: "Open Last", // Open the file location of the previous one
+    ButtonTextOpenFile: "Go to file", // Open the file location
+    ButtonTextOpenLast: "Go to previous card", // Open the file location of the previous one
     ClipTextEase: "Ease of Recall", // Ease of recall, higher value indicates easier
     // Configuration File
     SettingTextAosrSettings: "Settings for Aosr",
