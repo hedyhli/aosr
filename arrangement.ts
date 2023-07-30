@@ -189,9 +189,8 @@ export class Arrangement extends ArrangementBase {
             patterns = this.allPattern;
         }
 
-        patterns = shuffle<Pattern>(patterns)
-    
         if (patterns) {
+            patterns = shuffle<Pattern>(patterns)
             for (let i = 0; i < patterns.length; i++) {
                 let p = patterns[i]
                 let cardp = await this.findLivePattern(p)
