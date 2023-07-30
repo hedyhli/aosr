@@ -304,7 +304,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 		let date = this.state.nowPattern?.schedule.CalcNextTime(opt)
 		let fromNow = date?.fromNow() || ""
 		if (fromNow !== "") {
-            return `(+ ${date?.days()}d)`
+            return `(+${date?.days()}d)`
 		}
 		return ""
 	}
@@ -354,14 +354,13 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 					</Box>
 				</>
 			}
-
-            {
-				!GlobalSettings.HideContext && <>
-					<Box sx={{ marginTop: 2, marginBottom: 2 }}>
-						<Typography variant="h6"><MarkdownRenderComponent markdown={this.state.heading} sourcePath={''} component={this.props.view} /></Typography>
-					</Box>
-				</>
-			}
+            <Box sx={{ marginTop: 2, marginBottom: 2 }}>
+                <Typography variant="h6">
+                    {"[ "}
+                    <MarkdownRenderComponent markdown={this.state.heading} sourcePath={''} component={this.props.view} />
+                    {" ]"}
+                </Typography>
+            </Box>
 
 			<Stack flexWrap="wrap" useFlexGap direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ marginTop: 2, marginBottom: 2 }}>
 				<Stack direction={'row'} spacing={2} >
@@ -373,7 +372,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 					}
 					{
 						this.getLastTime() && <>
-						    {" | "}
+						    {", "}
                             {this.getLastTime()}
                         </>
 					}

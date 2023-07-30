@@ -90,6 +90,7 @@ export class AOSRSettingTab extends PluginSettingTab {
 
         new Setting(containerEl)
             .setName(i18n.t('SettingHideContext') || '')
+            .setDesc("Don't show the file path from where a card is from")
             .addToggle(toggle => toggle
                 .setValue(GlobalSettings.HideContext)
                 .onChange(async (value) => {
