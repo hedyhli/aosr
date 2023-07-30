@@ -356,7 +356,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 			}
             <Box sx={{ marginTop: 2, marginBottom: 2 }}>
                 <Typography variant="h6">
-                    {"[ "}<MarkdownRenderComponent markdown={this.state.heading} sourcePath={''} component={this.props.view} />{" ]"}
+                    <MarkdownRenderComponent markdown={`[ ${this.state.heading} ]`} sourcePath={''} component={this.props.view} />
                 </Typography>
             </Box>
 
