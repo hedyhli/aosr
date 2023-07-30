@@ -2,12 +2,14 @@ name: Build obsidian plugin
 
 on:
   push:
+    branches:
+      - '**'
     # Sequence of patterns matched against refs/tags
     tags:
       - "*" # Push events to matching any tag format, i.e. 1.0, 20.15.10
 
 env:
-  PLUGIN_NAME: aosr # Change this to the name of your plugin-id folder
+  PLUGIN_NAME: aosr-fork # Change this to the name of your plugin-id folder
 
 jobs:
   build:
