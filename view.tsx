@@ -339,30 +339,34 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 					<Button onClick={() => this.openPatternFile(this.state.nowPattern)}><Trans i18nKey="ButtonTextOpenFile" /></Button>
 					<Button onClick={() => this.openPatternFile(this.lastPattern)}><Trans i18nKey="ButtonTextOpenLast" /></Button>
 				</Stack>
-				<Stack direction={'row'} spacing={2} >
-					{
-						this.getLastTime() &&
-						<Chip sx={{ color: 'var(--text-normal)', }} label={this.getLastTime()} />
-					}
-					{
-						this.state.nowPattern &&
-						<Chip sx={{ color: 'var(--text-normal)', }} label={
-							<>
-								<Trans i18nKey="ClipTextEase" />{" "}
-								{this.state.nowPattern?.schedule.Ease.toFixed(0)}
-							</>
-						} />
-					}
-				</Stack>
-				<Hidden smDown><Button onClick={this.next} startIcon={<SkipNextIcon />}><Trans i18nKey="ButtonTextSkip" /></Button></Hidden>
 			</Stack>
-			{
+
+            {
 				!GlobalSettings.HideContext && <>
 					<Box sx={{ marginTop: 2, marginBottom: 2 }}>
 						<Typography variant="h3">
 							{this.state.fileName}
 						</Typography>
 					</Box>
+				</>
+			}
+			<Stack flexWrap="wrap" useFlexGap direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ marginTop: 2, marginBottom: 2 }}>
+				<Stack direction={'row'} spacing={2} >
+					{
+						this.state.nowPattern && <>
+                            <Trans i18nKey="ClipTextEase" />{" "}
+                            {this.state.nowPattern?.schedule.Ease.toFixed(0)}
+                        </>
+					}
+					{" | "}
+					{
+						this.getLastTime() &&
+						{this.getLastTime()}
+					}
+				</Stack>
+            </Stack>
+            {
+				!GlobalSettings.HideContext && <>
 					<Box sx={{ marginTop: 2, marginBottom: 2 }}>
 						<Typography variant="h6"><MarkdownRenderComponent markdown={this.state.heading} sourcePath={''} component={this.props.view} /></Typography>
 					</Box>
@@ -372,6 +376,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 				{
 					!this.state.showAns &&
 					<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+                        <Hidden smDown><Button onClick={this.next} startIcon={<SkipNextIcon />}><Trans i18nKey="ButtonTextSkip" /></Button></Hidden>
 						<DelayButton initTime={GlobalSettings.WaitingTimeoutBase} color="error" size="large" onClick={() => this.markAs(markEnum.FORGET)}><Trans i18nKey="ButtonTextForget" /></DelayButton>
 						<DelayButton initTime={GlobalSettings.WaitingTimeoutBase * DURATION_CHECK} color="info" size="large" onClick={() => this.markAs(markEnum.NOTSURE)}><Trans i18nKey="ButtonNotSure" /></DelayButton>
 						<Button color="success" size="large" onClick={() => this.markAs(markEnum.KNOWN)}><Trans i18nKey="ButtonTextKnown" /></Button>

@@ -16,7 +16,7 @@ const enTranslation = {
     ButtonTextHard: "Difficult", // A bit difficult
     ButtonTextFair: "Okay", // Okay
     ButtonTextEasy: "Easy", // Easy
-    ButtonTextWrong: "Misremembered", // Misremembered
+    ButtonTextWrong: "Oops", // Misremembered
     // Button Area
     ButtonTextSkip: "Skip", // Skip to the next
     ButtonTextOpenFile: "Open File", // Open the file location
