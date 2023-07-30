@@ -1,11 +1,9 @@
 .aosr-fuzzy-ctrl .aosr-fuzzy-el {
-    filter: blur(10px);
-    color: #fff;
+    filter: opacity(0);
 }
 
 .aosr-unblur-ctrl .aosr-fuzzy-el {
-    filter: blur(0);
-    color: default;
+    filter: opacity(1);
 }
 
 .aosr-fuzzy-el {
@@ -13,12 +11,12 @@
 }
 
 .aosr-answer {
-    filter: blur(10px);
+    filter: opacity(0);
     transition: filter 0.2s ease-in-out;
 }
 
 .aosr-answer.aosr-show {
-    filter: blur(0);
+    filter: opacity(1);
     color: default;
 }
 
