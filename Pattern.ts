@@ -37,10 +37,9 @@ export abstract class Pattern {
 export function prettyText (text:string):string {
 	let tags = TagParser.parse(text)
 	for (let tag of tags.Tags) {
-		if (tag.Head != CardIDTag) {
-			continue
+		if (tag.Head == CardIDTag || tag.Original == "#multicloze" ) {
+            text = text.replace(tag.Original, "")
 		}
-		text = text.replace(tag.Original, "")
 	}
 	return text
 }

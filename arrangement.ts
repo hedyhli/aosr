@@ -130,7 +130,7 @@ export class Arrangement extends ArrangementBase {
         if (this.allPattern.length > 0) {
             retlist.push(new ArrangementItem(TAGNAME.ALLTAG, this.allPattern.length, i18next.t('StartTextALL')))
         }
-        return shuffle<ArrangementItem>(retlist)
+        return retlist
     }
     private sort() {
         let now = window.moment()
@@ -188,6 +188,8 @@ export class Arrangement extends ArrangementBase {
         } else if (name == TAGNAME.ALLTAG) {
             patterns = this.allPattern;
         }
+
+        patterns = shuffle<Pattern>(patterns)
     
         if (patterns) {
             for (let i = 0; i < patterns.length; i++) {
