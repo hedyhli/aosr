@@ -302,7 +302,11 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 	}
 	getOptDate = (opt: ReviewEnum): string => {
 		let date = this.state.nowPattern?.schedule.CalcNextTime(opt)
-		return date?.fromNow() || ""
+		let fromNow = date?.fromNow() || ""
+		if (fromNow !== "") {
+            return `(+ ${date?.days()}d)`
+		}
+		return ""
 	}
 	getOptRate = (opt: LearnEnum): string => {
 		if (!this.state.nowPattern) {
@@ -350,6 +354,15 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 					</Box>
 				</>
 			}
+
+            {
+				!GlobalSettings.HideContext && <>
+					<Box sx={{ marginTop: 2, marginBottom: 2 }}>
+						<Typography variant="h6"><MarkdownRenderComponent markdown={this.state.heading} sourcePath={''} component={this.props.view} /></Typography>
+					</Box>
+				</>
+			}
+
 			<Stack flexWrap="wrap" useFlexGap direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ marginTop: 2, marginBottom: 2 }}>
 				<Stack direction={'row'} spacing={2} >
 					{
@@ -366,13 +379,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 					}
 				</Stack>
             </Stack>
-            {
-				!GlobalSettings.HideContext && <>
-					<Box sx={{ marginTop: 2, marginBottom: 2 }}>
-						<Typography variant="h6"><MarkdownRenderComponent markdown={this.state.heading} sourcePath={''} component={this.props.view} /></Typography>
-					</Box>
-				</>
-			}
+
 			<Box sx={{ marginTop: 2, marginBottom: 2 }}>
 				{
 					!this.state.showAns &&
