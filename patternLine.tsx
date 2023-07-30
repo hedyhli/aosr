@@ -14,7 +14,6 @@ import MUICard from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system';
 
-import pluginAPI from '@vanakat/plugin-api'
 const tts = pluginApi('tts');
 
 
@@ -46,26 +45,32 @@ abstract class linePattern extends Pattern {
 	Component = (props: PatternProps): JSX.Element => {
 		return <LinePatternComponent reverse={this.reverse} front={this.front} back={this.back} path={this.card.note.path} patternProps={props}></LinePatternComponent>
 	}
-	Pronounce(): void {
-		// 如果是单词 则尝试调用有道发音
-		let title = ""
-		let text = ""
-		if (this.reverse == false) {
-			title = this.front
-			text = this.back
-		} else {
-			title = this.back
-			text = this.front
-		}
-		if (/^[a-zA-Z\s-]+$/.test(title) && /^[a-zA-Z\s-]+$/.test(text)) {
-			setTimeout(() => {
-				this.playTTS(title, text)
-			}, 100);
-		}
-	}
-	playTTS = async (title: string, text: string) => {
+	// Pronounce(): void {
+	// 	// 如果是单词 则尝试调用有道发音
+	// 	let title = ""
+	// 	let text = ""
+	// 	if (this.reverse == false) {
+	// 		title = this.front
+	// 		text = this.back
+	// 	} else {
+	// 		title = this.back
+	// 		text = this.front
+	// 	}
+	// 	if (/^[a-zA-Z\s-]+$/.test(title) && /^[a-zA-Z\s-]+$/.test(text)) {
+	// 		setTimeout(() => {
+	// 			this.playTTS(title, text)
+	// 		}, 100);
+	// 	}
+	// }
+	async PlayTTS() {
 		if (GlobalSettings.WordTTSURL.length > 0) {
-            await tts.say(title, text);
+            setTimeout(() => {
+                if (this.reverse == false) {
+                    await tts.say(this.front, this.back);
+                } else {
+                    await tts.say(this.back, this.front);
+                }
+            }, 100);
 			// let url = GlobalSettings.WordTTSURL.replace('%s', text)
 			// const audio = new Audio(url)
 			// await audio.play()
