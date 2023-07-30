@@ -288,7 +288,7 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
 			fileName: replaceSlashWithArrow(removeMdExtension(result.value.pattern.card.note.path)),
 			showAns: false,
 		})
-		result.value.pattern.PlayTTS()
+		result.value.pattern.Pronounce()
 	}
 	PatternComponent = () => {
 		if (this.state.nowPattern) {
