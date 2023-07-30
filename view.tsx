@@ -358,10 +358,11 @@ class Reviewing extends React.Component<ReviewingProps, ReviewingState> {
                             {this.state.nowPattern?.schedule.Ease.toFixed(0)}
                         </>
 					}
-					{" | "}
 					{
-						this.getLastTime() &&
-						{this.getLastTime()}
+						this.getLastTime() && <>
+						    {" | "}
+                            {this.getLastTime()}
+                        </>
 					}
 				</Stack>
             </Stack>
