@@ -1,9 +1,11 @@
 .aosr-fuzzy-ctrl .aosr-fuzzy-el {
     filter: blur(10px);
+    color: #fff;
 }
 
 .aosr-unblur-ctrl .aosr-fuzzy-el {
     filter: blur(0);
+    color: default;
 }
 
 .aosr-fuzzy-el {
@@ -17,6 +19,7 @@
 
 .aosr-answer.aosr-show {
     filter: blur(0);
+    color: default;
 }
 
 .markdown-reading-view a.tag:is([href^="#AOSR/"]), .markdown-source-view a.tag:is([href^="#AOSR/"]) {
