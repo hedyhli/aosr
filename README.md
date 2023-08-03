@@ -14,6 +14,16 @@ CHANGES from the original Aosr
 
 ---
 
+<details><summary> Light theme screenshots </summary>
+
+<img width="600" alt="image" src="https://github.com/hedyhli/aosr/assets/50042066/4c3ca646-e3d2-4691-8162-b19c6b0aaf48">
+
+<img width="600" alt="image" src="https://github.com/hedyhli/aosr/assets/50042066/5730e58e-a17e-4ed5-8acb-093b10191bca">
+</details>
+
+
+<img width="600" alt="image" src="https://github.com/hedyhli/aosr/assets/50042066/2273bf58-09e5-45c7-a224-603eba76961e">
+
 <details>
 	<summary>Original readme</summary>
 
