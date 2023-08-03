@@ -1,7 +1,21 @@
 # Aosr
 
-![GitHub all releases](https://img.shields.io/github/downloads/linanwx/aosr/total) ![release](https://img.shields.io/github/v/release/linanwx/aosr
-)
+**NOTE: This repo is a FORK of the [original Aosr](https://github.com/linanwx/aosr), the changes are listed below, and do check commit log for details. Most of the code is not written by myself.**
+
+CHANGES from the original Aosr
+- Make back of the card and clozes transparent rather than blurred. This eliminates hinting the user on how the answer roughly looks like
+- (unstable) Use the [Obsidian Text-To-Speech Plugin](https://github.com/joethei/obsidian-tts) API to automatically speak each card's content (both front and back) if the TTS URL setting is not null
+- Rearranged buttons and UI elements
+- Shuffles all cards before review
+- Hides the "#multicloze" tag for a card during review
+- Updates grammar and wording (personal preference)
+- Changed the "Waiting Timeout Basevalue" setting input to use text field rather than obsidian slider
+
+
+---
+
+<details>
+	<summary>Original readme</summary>
 
 Aosr is **A**nother **O**bsidian plugin for **S**paced **R**epetition.
 
@@ -437,3 +451,5 @@ react (MIT)   https://github.com/facebook/react
 YAML (ISC)    https://github.com/eemeli/yaml
 MUI (MIT)     https://github.com/mui/material-ui
 ```
+
+</details>
